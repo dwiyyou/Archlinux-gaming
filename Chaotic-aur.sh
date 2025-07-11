@@ -23,12 +23,13 @@ fi
 
 # Langkah 1: Pasang kunci GPG
 echo -e "${GREEN}[1/4] Memasang kunci GPG...${NC}"
-pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com || error "Gagal menerima kunci"
-pacman-key --lsign-key FBA220DFC880C036 || error "Gagal menandatangani kunci"
+sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com || error "Gagal menerima kunci"
+sudo pacman-key --lsign-key 3056513887B78AEB || error "Gagal menandatangani kunci"
 
 # Langkah 2: Pasang paket chaotic-keyring dan mirrorlist
 echo -e "${GREEN}[2/4] Menginstal chaotic-keyring dan mirrorlist...${NC}"
-pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' || error "Gagal menginstal paket"
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' || error "Gagal menginstal paket"
 
 # Langkah 3: Konfigurasi pacman.conf
 echo -e "${GREEN}[3/4] Mengkonfigurasi /etc/pacman.conf...${NC}"
